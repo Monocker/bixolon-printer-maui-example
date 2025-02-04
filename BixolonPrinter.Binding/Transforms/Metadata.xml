@@ -1,0 +1,9 @@
+﻿<metadata>
+	<!-- Ensure that the necessary classes are public -->
+	<attr
+        path="/api/package[@name='com.bixolon.printer']/class[@name='BixolonPrinter']"
+        name="visibility">public</attr>
+
+	<!-- Remove unnecessary classes -->
+	<remove-node path="/api/package[not(@name='com.bixolon.printer')]" />
+</metadata>
