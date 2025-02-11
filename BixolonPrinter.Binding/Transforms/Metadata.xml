@@ -1,9 +1,53 @@
-﻿<metadata>
-	<!-- Ensure that the necessary classes are public -->
-	<attr
-        path="/api/package[@name='com.bixolon.printer']/class[@name='BixolonPrinter']"
-        name="visibility">public</attr>
+﻿<!--<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	--><!-- Forzar el mapeo de las clases esenciales --><!--
+	<attr path="/api/package[@name='com.bxl.config.editor']/class[@name='BXLConfigLoader']" name="managedName">BXLConfigLoader</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='POSPrinter']" name="managedName">POSPrinter</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='POSPrinterConst']" name="managedName">POSPrinterConst</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='JposException']" name="managedName">JposException</attr>
 
-	<!-- Remove unnecessary classes -->
-	<remove-node path="/api/package[not(@name='com.bixolon.printer')]" />
+	--><!-- Eliminar todos los paquetes que comiencen con MF.Org.Apache (HTML, XML, Xerces, etc.) --><!--
+	<remove-node path="/api/package[starts-with(@name, 'MF.Org.Apache')]" />
+
+	--><!-- Eliminar el paquete de servidor de Bixolon si no lo usas --><!--
+	<remove-node path="/api/package[@name='com.bixolon.commonlib.server']" />
+
+	--><!-- Eliminar el paquete de conectividad de búsqueda (o, al menos, sus clases problemáticas) si no lo usas --><!--
+	<remove-node path="/api/package[@name='com.bixolon.commonlib.connectivity.searcher']" />
+</metadata>-->
+
+
+<!--<metadata>
+	--><!-- Forzar el mapeo de las clases esenciales --><!--
+	<attr path="/api/package[@name='com.bxl.config.editor']/class[@name='BXLConfigLoader']" name="managedName">BXLConfigLoader</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='POSPrinter']" name="managedName">POSPrinter</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='POSPrinterConst']" name="managedName">POSPrinterConst</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='JposException']" name="managedName">JposException</attr>
+
+	--><!-- Eliminar TODOS los paquetes de Apache (HTML, XML, Xerces, etc.) --><!--
+	<remove-node path="/api/package[starts-with(@name, 'MF.Org.Apache')]" />
+
+	--><!-- Opcional: eliminar los paquetes de Bixolon que no uses --><!--
+	<remove-node path="/api/package[@name='com.bixolon.commonlib.server']" />
+	<remove-node path="/api/package[@name='com.bixolon.commonlib.connectivity.searcher']" />
+</metadata>-->
+
+<metadata>
+	<!-- Forzar el mapeo de las clases esenciales para la impresión -->
+	<attr path="/api/package[@name='com.bxl.config.editor']/class[@name='BXLConfigLoader']" name="managedName">BXLConfigLoader</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='POSPrinter']" name="managedName">POSPrinter</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='POSPrinterConst']" name="managedName">POSPrinterConst</attr>
+	<attr path="/api/package[@name='jpos']/class[@name='JposException']" name="managedName">JposException</attr>
+
+	<!-- Forzar que el tercer parámetro del método printBitmap se genere como int (no Color) -->
+	<attr path="/api/package[@name='jpos']/class[@name='POSPrinter']/method[@name='printBitmap' and count(parameter)=5]/parameter[3]" name="type">int</attr>
+
+	<!-- Eliminar TODOS los paquetes cuyo nombre comience con "mf.org.apache" (Xerces, XML, HTML, etc.) -->
+	<remove-node path="/api/package[starts-with(@name, 'mf.org.apache')]" />
+
+	<!-- Opcional: eliminar también los paquetes de Bixolon que no usas (como servidor y búsqueda de red) -->
+	<remove-node path="/api/package[@name='com.bixolon.commonlib.server']" />
+	<remove-node path="/api/package[@name='com.bixolon.commonlib.connectivity.searcher']" />
 </metadata>
+
+

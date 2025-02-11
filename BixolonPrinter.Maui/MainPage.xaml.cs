@@ -1,4 +1,5 @@
 ﻿using BixolonPrinter.Maui.Services;
+using BixolonPrinter.Maui.Models;
 
 namespace BixolonPrinter.Maui;
 
@@ -11,24 +12,19 @@ public partial class MainPage : ContentPage
         InitializeComponent();
         _printerService = printerService;
     }
-
-    // Parameterless constructor, required for instantiation via XAML.
-    //  Here DependencyService is used to get the implementation.
     public MainPage() : this(DependencyService.Get<IPrinterService>())
     {
     }
 
-    private async void OnPrintClicked(object sender, EventArgs e)
+    private async void OnPrintImageClicked(object sender, EventArgs e)
     {
-        IsBusy = true;
-
         try
         {
-            var connected = await _printerService.Connect("74:F0:7D:E5:91:F7");
+            bool connected = await _printerService.Connect("74:F0:7D:E5:91:F7");
             if (connected)
             {
-                await _printerService.PrintText("Test in MAUI!\nBixolon SPP-R200III");
-                await DisplayAlert("Success", "Printing completed", "OK");
+                await _printerService.PrintImage("logo");
+                await DisplayAlert("Success", "Image printed correctly", "OK");
             }
             else
             {
@@ -42,7 +38,6 @@ public partial class MainPage : ContentPage
         finally
         {
             await _printerService.Disconnect();
-            IsBusy = false;
         }
     }
 }

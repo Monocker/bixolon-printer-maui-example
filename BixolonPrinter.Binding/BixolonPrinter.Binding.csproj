@@ -7,6 +7,15 @@
   </PropertyGroup>
 	<ItemGroup>
 		<TransformFile Include="Transforms\Metadata.xml" />
-		<EmbeddedJar Include="Jars\BixolonPrinter.jar" />
+		<EmbeddedJar Include="Jars\*.jar" />
+		<LibraryProjectZip Include="Jars\*.aar" />
+	</ItemGroup>
+	<ItemGroup>
+	
+		<AndroidNativeLibrary Include="JniLibs\**\*.so" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="SkiaSharp" Version="3.116.1" />
+	  <PackageReference Include="SkiaSharp.Extended" Version="2.0.0" />
 	</ItemGroup>
 </Project>

@@ -1,18 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:versionCode="1"
+          android:versionName="1.0"
+          package="com.companyname.bixolonprinter.maui">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="34" />
-
 	<uses-permission android:name="android.permission.BLUETOOTH" />
 	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 	<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 	<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.INTERNET" />
 
 	<application
-        android:allowBackup="true"
-        android:icon="@mipmap/appicon"
-        android:supportsRtl="true"
-        android:usesCleartextTraffic="true">
+		android:allowBackup="true"
+		android:icon="@mipmap/appicon"
+		android:supportsRtl="true"
+		android:usesCleartextTraffic="true"
+		tools:replace="android:icon,android:label"
+		android:label="BixolonPrinter.Maui"
+		android:name="crc64ad929fec478062c4.MainApplication"
+		android:debuggable="true"
+		android:extractNativeLibs="true">
+		<activity
+			android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode"
+			android:icon="@mipmap/appicon"
+			android:label="BixolonPrinter.Maui"
+			android:theme="@style/Maui.SplashTheme"
+			android:name="crc64ad929fec478062c4.MainActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<!-- Resto de tus actividades, providers, receivers, etc. -->
 	</application>
 </manifest>
